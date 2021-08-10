@@ -1,0 +1,93 @@
+$display-list: none block flex inline inline-block inline-flex table-caption;
+$text-align-list: center right left;
+
+@each $breakpoint, $value in $breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+
+    @each $value in $text-align-list {
+      $textClass: text-#{$breakpoint}-#{$value};
+      @if($breakpoint == 'xs') {
+        $textClass: text-#{$value};
+      }
+      .#{$textClass} {
+        text-align: $value !important;
+      }
+    }
+
+    @each $value in $display-list {
+      $displayClass: d-#{$breakpoint}-#{$value};
+      @if($breakpoint == 'xs') {
+        $displayClass: d-#{$value};
+      }
+      .#{$displayClass} {
+        display: $value !important;
+      }
+    }
+  }
+}
+.text-light {
+  font-weight: 300 !important;
+}
+.text-normal {
+  font-weight: 400 !important;
+}
+.text-medium {
+  font-weight: 500 !important;
+}
+.text-semibold {
+  font-weight: 600 !important;
+}
+.text-bold {
+  font-weight: 700 !important;
+}
+.text-sm {
+  font-size: 12px !important;
+}
+
+.text-smaller {
+  font-size: 16px !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.text-dark {
+  color: $dark !important;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-mobile-full {
+  @include media-breakpoint-down(xs) {
+    max-width: 100vw;
+    margin-left: -30px;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.bg-primary {
+  background: transparent linear-gradient(112deg, #00BD39 0%, #00CC81 100%) 0% 0% no-repeat padding-box;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
